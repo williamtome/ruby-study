@@ -1,0 +1,77 @@
+{
+  // Use o IntelliSense para saber mais sobre os atributos possíveis.
+  // Focalizar para exibir as descrições dos atributos existentes.
+  // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Start Rails server",
+      "type": "Ruby",
+      "request": "launch",
+      "cwd": "${workspaceRoot}",
+      "program": "${workspaceRoot}/bin/rails",
+      "env": {
+        "PATH": "/home/william/.rvm/gems/ruby-2.7.1",
+        "GEM_HOME": "/home/william/.rvm/gems/ruby-2.7.1",
+        "GEM_PATH": "/home/william/.rvm/gems/ruby-2.7.1",
+        "RUBY_VERSION": "ruby-2.7.1"
+      },
+      "args": [
+        "server",
+        "-p",
+        "3000"
+      ]
+    },
+    {
+      "name": "Debug Rails server",
+      "type": "Ruby",
+      "request": "launch",
+      "cwd": "${workspaceRoot}",
+      "useBundler": false,
+      "pathToBundler": "${env:rvm_path}/gems/ruby-2.7.1/bin/bundle",
+      "program": "${workspaceRoot}/bin/rails",
+      "args": [
+        "server",
+        "-p",
+        "3000"
+      ]
+    },
+    {
+      "name": "Run RSpec - all",
+      "type": "Ruby",
+      "request": "launch",
+      "cwd": "${workspaceRoot}",
+      "program": "${env:rvm_path}/gems/ruby-2.7.1/bin/rspec",
+      "args": [
+        "--pattern",
+        "${workspaceRoot}/spec/**/*_spec.rb"
+      ]
+    },
+    {
+      "name": "Debug RSpec - open spec file",
+      "type": "Ruby",
+      "request": "launch",
+      "cwd": "${workspaceRoot}",
+      "useBundler": true,
+      "pathToBundler": "${env:rvm_path}/gems/ruby-2.7.1/bin/bundle",
+      "debuggerPort": "1235",
+      "program": "${env:rvm_path}/gems/ruby-2.7.1/bin/rspec",
+      "args": [
+        "${file}"
+      ]
+    },
+    {
+      "name": "Debug RSpec - open spec file on a certain line",
+      "type": "Ruby",
+      "request": "launch",
+      "cwd": "${workspaceRoot}",
+      "useBundler": true,
+      "pathToBundler": "${env:rvm_path}/gems/ruby-2.7.1/bin/bundle",
+      "debuggerPort": "1235",
+      "program": "${env:rvm_path}/gems/ruby-2.7.1/bin/rspec",
+      "args": [
+        "${file}:${lineNumber}"
+      ]
+    }
+  ]
+}
