@@ -1,11 +1,6 @@
 def is_palindrome?(word)
   word = word.downcase
-  reverse_word = ""
-  index = word.length
-  until index == 0
-    reverse_word += word[index - 1]
-    index -= 1
-  end
+  reverse_word = word.reverse
   
   puts "Palavra #{word} é palíndrome? #{reverse_word == word}"
 end
