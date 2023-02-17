@@ -1,16 +1,16 @@
-def is_palindrome(word)
-  chars = word.length
-  i, differents = 0
-  while chars >= i 
-    if word[i] != word[chars]
-      differents++       
-    end
-    i++
-    chars--
+def is_palindrome?(word)
+  word = word.downcase
+  reverse_word = ""
+  index = word.length
+  until index == 0
+    reverse_word += word[index - 1]
+    index -= 1
   end
-  puts differents ? "A palavra informada é palindrome" : "A palavra informada não é palindrome"
+  
+  puts "Palavra #{word} é palíndrome? #{reverse_word == word}"
 end
 
-print "Digite uma palavra: "
+print "Informe uma palavra: "
 word = gets.chomp
-is_palindrome(word)
+
+is_palindrome?(word)
