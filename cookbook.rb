@@ -1,51 +1,65 @@
-puts "Bem-vindo ao Cookbook, sua rede social de receitas"
+REGISTER_RECIPE = 1
+SHOW_RECIPES = 2
+EXIT = 3
 
-$recipes = []
+def title
+  puts "=================================================="
+  puts "Bem-vindo ao Cookbook, sua rede social de receitas"
+  puts "=================================================="
+end
 
 def menu
+  puts
   puts "Escolha a opção desejada:"
-  puts "[1] - Cadastrar uma receita" 
-  puts "[2] - Mostrar as receitas" 
-  puts "[3] - Sair"
+  puts "[#{REGISTER_RECIPE}] - Cadastrar uma receita" 
+  puts "[#{SHOW_RECIPES}] - Mostrar as receitas" 
+  puts "[#{EXIT}] - Sair"
   print "Opção desejada: "
-  return gets.to_i
+  gets.to_i
 end
 
-def register_recipe(recipe, type)
-  $recipes << { recipe: recipe, type: type }
+def register_recipe()
   puts
-  puts "Receita #{recipe} cadastrada com sucesso!"  
-  puts
+  print "Digite o nome da receita: "
+  recipe_name = gets.chomp
+  print "Digite o tipo da receita: "
+  type = gets.chomp
+  { recipe: recipe_name, type: type }
 end
 
-def show_recipes
+def show_recipes(r)
   puts
   puts "============== Receitas cadastradas =============="
-  $recipes.each do |recipe|
+  r.each do |recipe|
     puts "#{recipe[:recipe]} - #{recipe[:type]}"
   end
   puts
 end
 
-option = self.menu
+def show_invalid_option
+  puts
+  puts 'Opção inválida!'
+  puts
+end
 
-while(option != 3)
-  if option == 1
-    puts
-    puts "Digite o nome da receita"
-    recipe_name = gets.chomp
-    puts "Digite o tipo da receita"
-    type = gets.chomp
-    self.register_recipe(recipe_name, type)
-    option = self.menu
-  elsif(option == 2)  
-    self.show_recipes
-    option = self.menu
+title
+
+recipes = []
+
+option = menu
+
+loop do
+  if option == REGISTER_RECIPE
+    recipes << register_recipe
+    option = menu
+  elsif(option == SHOW_RECIPES)  
+    show_recipes(recipes)
+    option = menu
+  elsif(option == EXIT)
+    break
   else
-    puts
-    puts 'Opção inválida!'
-    puts
-    option = self.menu
+    show_invalid_option
+    option = menu
   end
 end
 
