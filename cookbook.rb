@@ -1,22 +1,28 @@
-puts "=================================================="
-puts "Bem-vindo ao Cookbook, sua rede social de receitas"
-puts "=================================================="
+REGISTER_RECIPE = 1
+SHOW_RECIPES = 2
+EXIT = 3
+
+def title
+  puts "=================================================="
+  puts "Bem-vindo ao Cookbook, sua rede social de receitas"
+  puts "=================================================="
+end
 
 def menu
   puts
   puts "Escolha a opção desejada:"
-  puts "[1] - Cadastrar uma receita" 
-  puts "[2] - Mostrar as receitas" 
-  puts "[3] - Sair"
+  puts "[#{REGISTER_RECIPE}] - Cadastrar uma receita" 
+  puts "[#{SHOW_RECIPES}] - Mostrar as receitas" 
+  puts "[#{EXIT}] - Sair"
   print "Opção desejada: "
   gets.to_i
 end
 
 def register_recipe()
   puts
-  puts "Digite o nome da receita"
+  print "Digite o nome da receita: "
   recipe_name = gets.chomp
-  puts "Digite o tipo da receita"
+  print "Digite o tipo da receita: "
   type = gets.chomp
   { recipe: recipe_name, type: type }
 end
@@ -36,17 +42,21 @@ def show_invalid_option
   puts
 end
 
+title
+
 recipes = []
 
 option = menu
 
-while(option != 3)
-  if option == 1
+loop do
+  if option == REGISTER_RECIPE
     recipes << register_recipe
     option = menu
-  elsif(option == 2)  
+  elsif(option == SHOW_RECIPES)  
     show_recipes(recipes)
     option = menu
+  elsif(option == EXIT)
+    break
   else
     show_invalid_option
     option = menu
