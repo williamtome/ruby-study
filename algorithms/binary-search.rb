@@ -1,6 +1,10 @@
-def binary_search(arr, number_search)
-  length_array = arr.length
-  middle_index = (length_array - 1) / 2
+numbers = [10, 20, 30, 40, 50, 60, 70]
+number_search = 50
+low_index = 0
+high_index = arr.length - 1
+
+def binary_search(arr, number_search, low_index, high_index)
+  middle_index = high_index / 2
 
   return middle_index if number_search == arr[middle_index]
 
@@ -14,9 +18,6 @@ def binary_search(arr, number_search)
 
   return -1
 end
-
-numbers = [10, 20, 30, 40, 50, 60, 70]
-number_search = 50
 
 result = binary_search(numbers, number_search)
 
