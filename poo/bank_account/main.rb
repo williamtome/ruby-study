@@ -1,8 +1,9 @@
 # programa principal
 
 require_relative "./classes/Account.rb"
+require_relative "./classes/AccountWithTax.rb"
 
-conta_william = Account.new('William', 100)
+conta_william = AccountWithTaz.new('William', 100)
 conta_debora = Account.new('Débora', 200)
 
 conta_william.transfer(conta_debora, 50)
