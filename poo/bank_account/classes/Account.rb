@@ -19,7 +19,7 @@ class Account
     if balance >= amount
       @balance -= amount
     else
-      puts 'Não foi possível transferir. Saldo insuficiente.'
+      raise 'Não foi possível transferir. Saldo insuficiente.'
     end
   end
 

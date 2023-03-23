@@ -9,3 +9,12 @@ conta_william.transfer(conta_debora, 50)
 
 p "Conta William: #{conta_william.balance}"
 p "Conta Débora: #{conta_debora.balance}"
+
+begin
+  conta_william.transfer(conta_debora, 60)
+rescue StandardError => my_error
+  p "ËRRO: #{my_error}"
+end
+
+p "Conta William: #{conta_william.balance}"
+p "Conta Débora: #{conta_debora.balance}"
