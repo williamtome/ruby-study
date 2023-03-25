@@ -1,14 +1,10 @@
 # conta bancária com taxa
 require_relative "./Account.rb"
 
-class AccountWithTaz < Account
-  def initialize(name, amount)
-    @name = name
-    @amount = amount
-  end
-  
+class AccountWithTax < Account
+  TAXA = 2
   def transfer(other_account, amount_to_transfer)
     super
-    debit(2)
+    debit(TAXA)
   end
 end 
