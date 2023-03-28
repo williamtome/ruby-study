@@ -1,0 +1,13 @@
+<h1>Products</h1>
+
+<a href=""></a>
+
+<ul>
+  <%@products.each do |product|%>
+  <li>
+    <a href=<%= product_path(product) %>">
+      <%=product.name%>
+    </a>
+  </li>
+  <% end %>
+</ul>
