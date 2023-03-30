@@ -1,0 +1,32 @@
+<%= form_with model: product do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+    <% product.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <br>
+  <div>
+    <%= form.label :price %><br>
+    <%= form.text_field :price %>
+    <% product.errors.full_messages_for(:price).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <br>
+  <div>
+    <%= form.label :active %>
+    <%= form.check_box :active %>
+    <% product.errors.full_messages_for(:active).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <br>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
